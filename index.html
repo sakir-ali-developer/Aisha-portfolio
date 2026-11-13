@@ -1,67 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="site">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- =====================================================================
        SEO
-       EDIT: once the site is live, replace every "https://www.your-domain.com"
-       below with your real domain (canonical, Open Graph, JSON-LD).
+       Live URL: https://aisha-portfolio-theta.vercel.app/
+       If you connect a custom domain later, replace this URL everywhere
+       in this <head> and in robots.txt + sitemap.xml.
        ===================================================================== -->
   <title>Aisha Ali Muhammad | Technical Project Manager | GoHighLevel, WordPress &amp; Automation</title>
   <meta name="description" content="Aisha Ali Muhammad is a Technical Project Manager with 3 years of experience managing GoHighLevel, WordPress, automation and digital projects from client requirements to final delivery.">
   <meta name="author" content="Aisha Ali Muhammad">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="theme-color" content="#0d0a12">
-  <link rel="canonical" href="https://www.your-domain.com/">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://aisha-portfolio-theta.vercel.app/">
+
+  <!-- EDIT: GOOGLE SEARCH CONSOLE. After adding the site in Search Console
+       (URL prefix method, "HTML tag"), paste your code below and uncomment it. -->
+  <!-- <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE"> -->
 
   <!-- Open Graph (LinkedIn, WhatsApp, Facebook previews) -->
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Aisha Ali Muhammad">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Aisha Ali Muhammad | Technical Project Manager">
   <meta property="og:description" content="Technical Project Manager for GoHighLevel, WordPress, automation and digital solutions. From client requirements to final delivery.">
-  <meta property="og:url" content="https://www.your-domain.com/">
-  <!-- EDIT: add a 1200x630 preview image and point this to it -->
-  <meta property="og:image" content="https://www.your-domain.com/og-preview.jpg">
+  <meta property="og:url" content="https://aisha-portfolio-theta.vercel.app/">
+  <meta property="og:image" content="https://aisha-portfolio-theta.vercel.app/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Aisha Ali Muhammad, Technical Project Manager: turning client requirements into delivered projects">
+  <meta property="profile:first_name" content="Aisha">
+  <meta property="profile:last_name" content="Ali Muhammad">
 
   <!-- Twitter / X card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aisha Ali Muhammad | Technical Project Manager">
   <meta name="twitter:description" content="Technical Project Manager for GoHighLevel, WordPress, automation and digital solutions.">
+  <meta name="twitter:image" content="https://aisha-portfolio-theta.vercel.app/og-preview.png">
+  <meta name="twitter:image:alt" content="Aisha Ali Muhammad, Technical Project Manager">
 
   <!-- Favicon: inline SVG monogram -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238a5cc7'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-weight='700' font-size='34' fill='%23fff'%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
+  <link rel="preload" as="image" href="Aisha.png" fetchpriority="high">
   <link rel="stylesheet" href="style.css">
 
   <!-- Lets the CSS know JavaScript is running (animations, preloader) -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Structured data: helps Google understand who this page is about -->
+  <!-- Structured data: helps Google understand who this page is about.
+       EDIT: LOCATION. When you add your city, add this inside "Person":
+         "address": { "@type": "PostalAddress", "addressLocality": "Your City", "addressCountry": "PK" },
+       (Placeholder values are left out on purpose; fake data hurts SEO.) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Aisha Ali Muhammad",
-    "jobTitle": "Technical Project Manager",
-    "url": "https://www.your-domain.com/",
-    "image": "https://www.your-domain.com/Aisha.png",
-    "email": "mailto:aishaalimuhammad837@gmail.com",
-    "sameAs": ["https://www.linkedin.com/in/aisha-ali-muhammad-b038b6402/"],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Your City",
-      "addressCountry": "Your Country"
-    },
-    "knowsAbout": [
-      "Technical Project Management", "Client Communication", "Requirement Gathering",
-      "GoHighLevel", "WordPress", "Elementor", "Workflow Automation",
-      "Make.com", "n8n", "Zapier", "ClickUp", "Airtable"
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://aisha-portfolio-theta.vercel.app/#person",
+        "name": "Aisha Ali Muhammad",
+        "jobTitle": "Technical Project Manager",
+        "description": "Technical Project Manager with 3 years of experience managing GoHighLevel, WordPress, automation and digital projects from client requirements to final delivery.",
+        "url": "https://aisha-portfolio-theta.vercel.app/",
+        "image": "https://aisha-portfolio-theta.vercel.app/Aisha.png",
+        "email": "mailto:aishaalimuhammad837@gmail.com",
+        "sameAs": ["https://www.linkedin.com/in/aisha-ali-muhammad-b038b6402/"],
+        "knowsAbout": [
+          "Technical Project Management", "Client Communication", "Requirement Gathering",
+          "GoHighLevel", "WordPress", "Elementor", "Workflow Automation",
+          "Make.com", "n8n", "Zapier", "ClickUp", "Airtable", "Slack"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aisha-portfolio-theta.vercel.app/#website",
+        "url": "https://aisha-portfolio-theta.vercel.app/",
+        "name": "Aisha Ali Muhammad | Technical Project Manager",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://aisha-portfolio-theta.vercel.app/#person" }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://aisha-portfolio-theta.vercel.app/#profilepage",
+        "url": "https://aisha-portfolio-theta.vercel.app/",
+        "name": "Aisha Ali Muhammad | Technical Project Manager | GoHighLevel, WordPress & Automation",
+        "isPartOf": { "@id": "https://aisha-portfolio-theta.vercel.app/#website" },
+        "mainEntity": { "@id": "https://aisha-portfolio-theta.vercel.app/#person" },
+        "dateModified": "2026-11-09"
+      }
     ]
   }
   </script>
@@ -107,6 +145,7 @@
     <symbol id="icon-linkedin" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21h-4V9Z"/></symbol>
     <symbol id="icon-send" viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4 18-7Z"/></symbol>
     <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1.2 1.2M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1.2-1.2"/></symbol>
     <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
 
     <!-- Dummy website screenshot for project cards.
@@ -291,7 +330,7 @@
                src="Aisha.png"
                alt="Aisha Ali Muhammad, Technical Project Manager"
                width="1037" height="1517"
-               fetchpriority="high">
+               fetchpriority="high" decoding="async">
 
           <!-- Rotating text badge -->
           <div class="spin-badge" aria-hidden="true">
@@ -844,18 +883,12 @@
 
         <!-- =============================================================
              LEAD FORM
-             Submissions go to Formspree, which emails every lead to you.
-
-             EDIT: FORM ENDPOINT
-             1. Sign up free at https://formspree.io with aishaalimuhammad837@gmail.com
-             2. Create a new form and copy its ID (looks like "xyzabcde")
-             3. Replace YOUR_FORM_ID in the action URL below with that ID
+             Submissions are saved in your database and show up in the
+             dashboard under "Leads". To also get an email for every new
+             lead, add FORMSPREE_ID in Vercel (see SETUP.md).
              ============================================================= -->
-        <form class="lead-form" id="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate data-animate>
+        <form class="lead-form" id="lead-form" action="/api/leads" method="POST" novalidate data-animate>
           <h3 class="lead-form__title">Tell me about it</h3>
-
-          <!-- Subject line of the email you receive -->
-          <input type="hidden" name="_subject" value="New lead from your portfolio website">
 
           <!-- Spam trap: real visitors never see or fill this -->
           <div class="lead-form__trap" aria-hidden="true">
@@ -1013,6 +1046,8 @@
     </div>
   </dialog>
 
+  <!-- Loads the content you edit in the dashboard (/wp-admin) -->
+  <script src="site-content.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

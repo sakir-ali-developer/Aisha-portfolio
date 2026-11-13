@@ -1,0 +1,8 @@
+# Allow search engines to crawl the portfolio, but not the dashboard.
+# /api/ stays open because the page loads its content from /api/content.
+User-agent: *
+Allow: /
+Disallow: /wp-admin
+Disallow: /admin/
+
+Sitemap: https://aisha-portfolio-theta.vercel.app/sitemap.xml

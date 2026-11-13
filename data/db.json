@@ -1,0 +1,481 @@
+{
+  "content": {
+    "settings": {
+      "experience": "3",
+      "teamSize": "3–5",
+      "location": "Your City, Country",
+      "status": "Open to new opportunities",
+      "email": "aishaalimuhammad837@gmail.com",
+      "phone": "",
+      "heroImage": "/uploads/1794320413501-aisha.png",
+      "heroImageAlt": "Aisha Ali Muhammad, Technical Project Manager",
+      "cv": "Aisha-Ali-Muhammad-CV.pdf"
+    },
+    "socials": [
+      {
+        "platform": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/aisha-ali-muhammad-b038b6402/"
+      },
+      {
+        "platform": "website",
+        "label": "",
+        "url": ""
+      }
+    ],
+    "hero": {
+      "hello": "Hi, I’m Aisha Ali Muhammad",
+      "role": "Technical Project Manager",
+      "titleLines": [
+        "Turning client",
+        "requirements into",
+        "[delivered] projects."
+      ],
+      "text": "I bridge clients and developers across GoHighLevel, WordPress, automation and digital platforms, from the first requirement to final handover.",
+      "button": "Start a conversation",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "text": "{{experience}} years experience"
+        },
+        {
+          "icon": "users",
+          "text": "Teams of {{teamSize}}"
+        },
+        {
+          "icon": "pin",
+          "text": "{{location}}"
+        }
+      ],
+      "badgeText": "TECHNICAL PROJECT MANAGER / DIGITAL DELIVERY /",
+      "flowFrom": "Requirements",
+      "flowTo": "Delivery"
+    },
+    "ticker": [
+      {
+        "bold": "{{experience}} Years",
+        "text": "Experience"
+      },
+      {
+        "bold": "{{teamSize}}",
+        "text": "Member Teams"
+      },
+      {
+        "bold": "7",
+        "text": "Project Categories"
+      },
+      {
+        "bold": "Requirements",
+        "text": "to Delivery"
+      }
+    ],
+    "about": {
+      "eyebrow": "About me",
+      "title": "I connect business goals with technical execution.",
+      "statement": "I’m a Technical Project Manager with {{experience}} years of experience coordinating digital projects, managing client relationships and guiding development teams. My role isn’t to write the code. It’s to understand it well enough to make informed decisions, set clear expectations and deliver the right solution.",
+      "paragraphs": [
+        "My work spans GoHighLevel CRM systems, WordPress websites, marketing automation, SaaS and AI-related platforms, online course platforms and e-commerce projects.",
+        "I turn client conversations into clear tasks, help developers move without guesswork, and check every deliverable against what was agreed."
+      ],
+      "linkText": "Let’s talk about your project or role",
+      "stats": [
+        {
+          "value": "{{experience}}",
+          "label": "Years of experience"
+        },
+        {
+          "value": "{{teamSize}}",
+          "label": "Team size I coordinate"
+        },
+        {
+          "value": "7",
+          "label": "Project categories"
+        }
+      ],
+      "toolsRow1": [
+        "GoHighLevel",
+        "WordPress",
+        "Elementor",
+        "Make.com",
+        "n8n",
+        "Zapier"
+      ],
+      "toolsRow2": [
+        "Slack",
+        "ClickUp",
+        "Airtable",
+        "Microsoft Office",
+        "Webhooks",
+        "GoDaddy"
+      ]
+    },
+    "services": {
+      "eyebrow": "What I do",
+      "title": "From the first call to final handover.",
+      "lead": "Five things I take care of on every project, so clients feel heard and developers know exactly what to build.",
+      "items": [
+        {
+          "title": "Client Communication & Requirements",
+          "text": "I work directly with clients to understand their goals, gather requirements, clarify expectations and turn discussions into actionable development tasks.",
+          "points": [
+            "Discovery calls & meetings",
+            "Requirement documentation",
+            "Expectation management"
+          ]
+        },
+        {
+          "title": "Technical Project Coordination",
+          "text": "I evaluate implementation options, discuss alternative approaches and work with developers to agree on the most suitable solution.",
+          "points": [
+            "Feasibility checks",
+            "Dependency mapping",
+            "Alternative solutions"
+          ]
+        },
+        {
+          "title": "Development Team Management",
+          "text": "Structured task descriptions, requirements shared on Slack, quick answers to questions, managed dependencies and steady follow-ups.",
+          "points": [
+            "Clear task briefs",
+            "Blocker resolution",
+            "Regular follow-ups"
+          ]
+        },
+        {
+          "title": "Project Tracking & Delivery",
+          "text": "Tasks, timelines and progress tracked in ClickUp and Airtable, with client timesheets maintained and deliverables coordinated.",
+          "points": [
+            "ClickUp & Airtable tracking",
+            "Client timesheets",
+            "Progress updates"
+          ]
+        },
+        {
+          "title": "Quality & Requirement Validation",
+          "text": "I review completed work against the agreed requirements, flag discrepancies and coordinate revisions before anything reaches the client.",
+          "points": [
+            "Requirement checks",
+            "Revision tracking",
+            "Final handover"
+          ]
+        }
+      ]
+    },
+    "expertise": {
+      "eyebrow": "Expertise",
+      "title": "Project management, backed by technical understanding.",
+      "tabs": [
+        {
+          "name": "GoHighLevel",
+          "icon": "funnel",
+          "intro": "CRM systems, funnels and automations for client-specific business processes.",
+          "items": [
+            "CRM configuration & pipelines",
+            "Workflow automation & triggers",
+            "Calendars & appointment booking",
+            "Forms, surveys & lead capture",
+            "Funnels & landing pages",
+            "Chatbots & Voice AI",
+            "Webhooks & third-party integrations"
+          ]
+        },
+        {
+          "name": "WordPress",
+          "icon": "globe",
+          "intro": "Website structure, configuration and technical coordination.",
+          "items": [
+            "Website structure & functionality",
+            "Elementor & Elementor Pro",
+            "Theme & plugin configuration",
+            "Domains, hosting & GoDaddy",
+            "Database & architecture fundamentals",
+            "HTML & CSS concepts",
+            "Troubleshooting"
+          ]
+        },
+        {
+          "name": "Automation",
+          "icon": "flow",
+          "intro": "Connecting platforms and planning workflows that actually run.",
+          "items": [
+            "Make.com",
+            "n8n",
+            "Zapier",
+            "Webhooks & data flow",
+            "CRM integrations",
+            "Feasibility & process planning"
+          ]
+        },
+        {
+          "name": "PM Tools",
+          "icon": "briefcase",
+          "intro": "The tools I use to keep teams aligned and projects on track.",
+          "items": [
+            "Slack: client & developer communication",
+            "ClickUp: tasks, deadlines & progress",
+            "Airtable: project & operational tracking",
+            "Microsoft Office: documentation & reporting",
+            "Client timesheets"
+          ]
+        }
+      ]
+    },
+    "work": {
+      "eyebrow": "Selected work",
+      "title": "Projects I’ve helped deliver.",
+      "lead": "The kinds of projects I coordinate, and my role on each.",
+      "note": "I’ve also coordinated work on other digital platforms and business tools, and I’m happy to walk through any project in detail.",
+      "projects": [
+        {
+          "title": "GoHighLevel CRM & Automation System",
+          "tags": [
+            "GoHighLevel",
+            "CRM",
+            "Automation"
+          ],
+          "text": "CRM setup, pipelines, workflow automation, lead capture, appointment booking and funnels built around client-specific processes.",
+          "role": "Requirement gathering, technical coordination, task management and delivery tracking.",
+          "link": "",
+          "image": "",
+          "accent": "#8a5cc7"
+        },
+        {
+          "title": "WordPress Business Website",
+          "tags": [
+            "WordPress",
+            "Elementor",
+            "Website"
+          ],
+          "text": "A WordPress and Elementor website covering configuration, domain and hosting coordination and custom front-end requirements.",
+          "role": "Client communication, scope clarification, development planning and requirement validation.",
+          "link": "",
+          "image": "",
+          "accent": "#b07ae8"
+        },
+        {
+          "title": "Cross-Platform Workflow Automation",
+          "tags": [
+            "Make.com",
+            "n8n",
+            "Zapier"
+          ],
+          "text": "Workflows built with Make.com, n8n, Zapier and webhooks to connect CRMs, forms and business tools.",
+          "role": "Process mapping, feasibility discussions and integration requirement documentation.",
+          "link": "",
+          "image": "",
+          "accent": "#6f8cf0"
+        },
+        {
+          "title": "SaaS & AI Platform",
+          "tags": [
+            "SaaS",
+            "AI",
+            "Product"
+          ],
+          "text": "A digital product involving SaaS functionality and AI-related features, from requirements through to delivery.",
+          "role": "Clarifying functionality, coordinating development tasks and managing client expectations.",
+          "link": "",
+          "image": "",
+          "accent": "#d07ad6"
+        },
+        {
+          "title": "Online Course Platform",
+          "tags": [
+            "Online Courses",
+            "Platform"
+          ],
+          "text": "A platform for publishing and delivering online courses, built around the client’s learning content.",
+          "role": "Understanding business needs, defining scope and coordinating development.",
+          "link": "",
+          "image": "",
+          "accent": "#e9a85c"
+        },
+        {
+          "title": "E-commerce Website",
+          "tags": [
+            "E-commerce",
+            "Online Store"
+          ],
+          "text": "An online store project, coordinated from requirement gathering to launch.",
+          "role": "Requirement gathering, developer coordination and pre-launch review.",
+          "link": "",
+          "image": "",
+          "accent": "#ec6f9a"
+        }
+      ]
+    },
+    "process": {
+      "eyebrow": "My process",
+      "title": "A clear path from requirements to delivery.",
+      "lead": "Six steps keep every project organised, transparent and moving forward.",
+      "steps": [
+        {
+          "icon": "search",
+          "title": "Discover",
+          "text": "Understand the client’s objectives, requirements, priorities and expected outcomes."
+        },
+        {
+          "icon": "chart",
+          "title": "Analyze",
+          "text": "Review technical requirements, identify dependencies, assess feasibility and discuss approaches."
+        },
+        {
+          "icon": "layers",
+          "title": "Plan",
+          "text": "Break requirements into clear tasks, set priorities and document acceptance criteria."
+        },
+        {
+          "icon": "sync",
+          "title": "Coordinate",
+          "text": "Brief developers, clarify requirements, resolve blockers and keep stakeholders updated."
+        },
+        {
+          "icon": "circle-check",
+          "title": "Review",
+          "text": "Validate completed work against requirements, collect feedback and coordinate revisions."
+        },
+        {
+          "icon": "package",
+          "title": "Deliver",
+          "text": "Coordinate final delivery, confirm open items and keep documentation and timesheets up to date."
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why work with me",
+      "title": "What you can expect.",
+      "cards": [
+        {
+          "icon": "chip",
+          "title": "Technically informed decisions",
+          "text": "I understand the platforms behind the projects I manage."
+        },
+        {
+          "icon": "chat",
+          "title": "Clear communication",
+          "text": "Client discussions become structured, understandable tasks."
+        },
+        {
+          "icon": "sync",
+          "title": "Solution-oriented thinking",
+          "text": "When the first approach won’t work, I find practical alternatives."
+        },
+        {
+          "icon": "tasks",
+          "title": "Organized execution",
+          "text": "Tasks, documentation, timelines and updates stay in order."
+        },
+        {
+          "icon": "shield",
+          "title": "Client-focused delivery",
+          "text": "Agreed requirements and business goals stay at the centre."
+        }
+      ]
+    },
+    "band": {
+      "text": "Let’s work together"
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Let’s start the conversation.",
+      "lead": "Hiring for a technical project manager role, or need someone to organise a digital project? Share a few details and I’ll get back to you.",
+      "formTitle": "Tell me about it"
+    },
+    "cta": {
+      "line1": "Clear requirements.",
+      "line2": "Organised delivery.",
+      "button": "Start a conversation"
+    },
+    "footer": {
+      "tagline": "Technical Project Manager | GoHighLevel, WordPress, Automation & Digital Solutions"
+    }
+  },
+  "updatedAt": "2026-11-13T11:51:12.819Z",
+  "leads": [
+    {
+      "name": "Marcus Vance",
+      "email": "marcus.vance@vancetech.io",
+      "company": "Vance Technologies",
+      "phone": "+1 (555) 234-5678",
+      "reason": "Project Coordination",
+      "interests": [
+        "GoHighLevel CRM",
+        "Automation & Integrations",
+        "Project Scoping"
+      ],
+      "message": "Hi Aisha, we have an upcoming enterprise migration to GoHighLevel with custom Make.com webhooks and Zapier workflows. We need a technical project manager to lead delivery and coordinate our 4 engineers. Looking forward to discussing your timeline and availability!",
+      "reference_link": "https://vancetech.io",
+      "is_read": false,
+      "created_at": "2026-11-13T05:51:07.116Z",
+      "id": 1
+    },
+    {
+      "name": "Sophia Martinez",
+      "email": "sophia@luminaagency.co",
+      "company": "Lumina Digital Agency",
+      "phone": "+44 20 7946 0912",
+      "reason": "Technical Consulting",
+      "interests": [
+        "WordPress & CMS",
+        "Sprint Planning",
+        "Quality Assurance"
+      ],
+      "message": "Hello Aisha! We love your portfolio. We are redesigning 3 WordPress client sites with custom ACF and WooCommerce integrations and need someone experienced in bridging client requirements and technical developers. Are you available for a 3-month contract?",
+      "reference_link": "https://luminaagency.co",
+      "is_read": false,
+      "created_at": "2026-11-12T11:51:07.118Z",
+      "id": 2
+    },
+    {
+      "name": "Alexander Wright",
+      "email": "a.wright@cloudpulse.app",
+      "company": "CloudPulse SaaS",
+      "phone": "+1 (415) 890-1234",
+      "reason": "Full Delivery Management",
+      "interests": [
+        "SaaS Delivery",
+        "Workflow Automation",
+        "Sprint Planning"
+      ],
+      "message": "Hi Aisha, our team is building an internal ops dashboard connecting HubSpot, Stripe, and PostgreSQL. We need a PM who understands technical architecture and can keep sprints on track. Let's schedule a call this week.",
+      "reference_link": "https://cloudpulse.app",
+      "is_read": true,
+      "created_at": "2026-11-11T11:51:07.118Z",
+      "id": 3
+    },
+    {
+      "name": "Fatima Al-Mansoor",
+      "email": "falmansoor@horizonbrands.ae",
+      "company": "Horizon Brands Dubai",
+      "phone": "+971 50 123 4567",
+      "reason": "Platform Migration",
+      "interests": [
+        "GoHighLevel CRM",
+        "E-Commerce",
+        "Client Communication"
+      ],
+      "message": "Greetings Aisha, we are launching an omnichannel campaign across the GCC and require CRM automation and landing funnel delivery within 6 weeks. Your technical PM background in Dubai/remote looks like a great fit.",
+      "reference_link": "https://horizonbrands.ae",
+      "is_read": true,
+      "created_at": "2026-11-10T11:51:07.118Z",
+      "id": 4
+    },
+    {
+      "name": "Daniel Kim",
+      "email": "dkim@hypergrowth.vc",
+      "company": "HyperGrowth Studio",
+      "phone": "+1 (650) 432-8765",
+      "reason": "Retainer / Ongoing PM",
+      "interests": [
+        "Make.com / n8n",
+        "Sprint Planning",
+        "Quality Assurance"
+      ],
+      "message": "Hey Aisha, we run an accelerator studio building multiple MVPs simultaneously. We are looking for an organized Technical PM to oversee backlog grooming, client demos, and developer handoffs across 2 portfolio startups.",
+      "reference_link": "https://hypergrowth.vc",
+      "is_read": false,
+      "created_at": "2026-11-09T11:51:07.118Z",
+      "id": 5
+    }
+  ]
+}
