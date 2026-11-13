@@ -40,7 +40,8 @@ const apiRoutes = {
   '/api/login': './api/login.js',
   '/api/logout': './api/logout.js',
   '/api/session': './api/session.js',
-  '/api/upload': './api/upload.js'
+  '/api/upload': './api/upload.js',
+  '/api/account': './api/account.js'
 };
 
 const server = http.createServer(async (req, res) => {
@@ -112,8 +113,8 @@ server.listen(PORT, () => {
   console.log(` 🌐 Portfolio:  http://localhost:${PORT}`);
   console.log(` 🔐 Dashboard:  http://localhost:${PORT}/wp-admin`);
   console.log('----------------------------------------------------');
-  console.log(' 🔑 Dummy Login Credentials:');
-  console.log('    Username: admin  (or aisha)');
-  console.log('    Password: password123');
+  console.log(' 🔑 Login Credentials:');
+  console.log(`    Username: ${process.env.ADMIN_USERNAME || 'aisha_muhammad_ali_@7623'}`);
+  console.log('    Password: [Configured securely]');
   console.log('====================================================');
 });

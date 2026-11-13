@@ -132,7 +132,51 @@ async function seedDatabase() {
         is_read BOOLEAN NOT NULL DEFAULT false
       )
     `;
-    console.log('✔ Tables "site_content" and "leads" verified.');
+    await sql`
+      CREATE TABLE IF NOT EXISTS admin_credentials (
+        id TEXT PRIMARY KEY,
+        username TEXT NOT NULL,
+        password_hash TEXT NOT NULL,
+        salt TEXT NOT NULL,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+      )
+    `;
+    console.log('✔ Tables "site_content", "leads", and "admin_credentials" verified.');
+
+    // 2. Seed Admin Credentials
+    const crypto = await import('node:crypto');
+    const defaultUser = process.env.ADMIN_USERNAME || 'aisha_muhammad_ali_@7623';
+    const defaultPass = process.env.ADMIN_PASSWORD || 'aisha_MUHAMMAD@#!Ali';
+    const salt = crypto.randomBytes(16).toString('hex');
+    const hash = crypto.pbkdf2Sync(defaultPass, salt, 100000, 64, 'sha512').toString('hex');
+
+    console.log(`🔐 Seeding admin credentials for '${defaultUser}'...`);
+    await sql`
+      INSERT INTO admin_credentials (id, username, password_hash, salt, updated_at)
+      VALUES ('admin', ${defaultUser}, ${hash}, ${salt}, now())
+      ON CONFLICT (id) DO UPDATE SET
+        username = EXCLUDED.username,
+        password_hash = EXCLUDED.password_hash,
+        salt = EXCLUDED.salt,
+        updated_at = now()
+    `;
+    console.log('✔ Admin credentials seeded successfully into Neon DB!');
+
+    // Also update data/db.json
+    try {
+      const raw = await fs.readFile(dbJsonPath, 'utf8');
+      const parsed = JSON.parse(raw);
+      parsed.admin_credentials = {
+        username: defaultUser,
+        password_hash: hash,
+        salt,
+        updated_at: new Date().toISOString()
+      };
+      await fs.writeFile(dbJsonPath, JSON.stringify(parsed, null, 2), 'utf8');
+      console.log('✔ Admin credentials synchronized to data/db.json!');
+    } catch (e) {
+      console.warn('Notice: could not sync data/db.json:', e.message);
+    }
 
     // 2. Seed Site Content
     const content = await loadBaseContent();

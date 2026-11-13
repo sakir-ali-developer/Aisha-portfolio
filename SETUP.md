@@ -18,15 +18,15 @@ Then open in your browser:
 - **Portfolio Website:** [http://localhost:3000](http://localhost:3000)
 - **Admin Dashboard:** [http://localhost:3000/wp-admin](http://localhost:3000/wp-admin)
 
-### 🔑 Default Dummy Credentials
+### 🔑 Administrator Credentials
 
-| Field | Default Value | Alternative |
-|---|---|---|
-| **Username** | `admin` | `aisha` |
-| **Password** | `password123` | `admin123` |
+| Field | Configured Value |
+|---|---|
+| **Username** | `aisha_muhammad_ali_@7623` |
+| **Password** | `aisha_MUHAMMAD@#!Ali` |
 
-> [!TIP]
-> The login screen at `/wp-admin` automatically pre-fills these credentials and includes a one-click **"Auto-fill"** button!
+> [!NOTE]
+> You can also update or change both your username and password anytime directly from the dashboard under **Site settings > Account & Security** (`#/account`).
 
 ---
 
@@ -81,17 +81,15 @@ Deploy the project to Vercel.
 ### 3. Connect File Storage (Vercel Blob)
 - **In Vercel:** Go to **Storage > Create Database > Blob**, create it, and click **Connect to Project**. Vercel adds `BLOB_READ_WRITE_TOKEN` automatically.
 
-### 4. Custom Login Credentials (Optional)
-If you want to replace the dummy credentials with your own private login in Vercel, go to **Settings > Environment Variables** and add:
+### 4. Custom Login Credentials
+Your credentials are stored securely and hashed with PBKDF2. You can update them at any time directly in the dashboard under **Account & Security**, or set them in Vercel **Settings > Environment Variables**:
 
-| Name | Description | Example |
+| Name | Description | Value |
 |---|---|---|
-| `ADMIN_USERNAME` | Custom login username | `aisha` |
-| `ADMIN_PASSWORD` | Custom secure password | *Your secret password* |
+| `ADMIN_USERNAME` | Login username | `aisha_muhammad_ali_@7623` |
+| `ADMIN_PASSWORD` | Secure password | `aisha_MUHAMMAD@#!Ali` |
 | `SESSION_SECRET` | Secret key for signing cookies | Any string of **at least 32 characters** |
 | `FORMSPREE_ID` *(optional)* | Formspree Form ID | For instant email alerts when leads arrive |
-
-*(If you don't set these, the default dummy credentials `admin` / `password123` continue to work.)*
 
 ---
 

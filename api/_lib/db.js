@@ -40,6 +40,13 @@ function ensureSchema() {
         reference_link TEXT,
         is_read BOOLEAN NOT NULL DEFAULT false
       )`;
+      await q`CREATE TABLE IF NOT EXISTS admin_credentials (
+        id TEXT PRIMARY KEY,
+        username TEXT NOT NULL,
+        password_hash TEXT NOT NULL,
+        salt TEXT NOT NULL,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+      )`;
     })().catch((error) => {
       schemaReady = null;
       throw error;
@@ -88,6 +95,27 @@ const neonStore = {
   async deleteLead(id) {
     await ensureSchema();
     await sql()`DELETE FROM leads WHERE id = ${id}`;
+  },
+
+  async getAdminCredentials() {
+    await ensureSchema();
+    const rows = await sql()`SELECT username, password_hash, salt, updated_at FROM admin_credentials WHERE id = 'admin'`;
+    return rows[0] || null;
+  },
+
+  async saveAdminCredentials({ username, password_hash, salt }) {
+    await ensureSchema();
+    const rows = await sql()`
+      INSERT INTO admin_credentials (id, username, password_hash, salt, updated_at)
+      VALUES ('admin', ${username}, ${password_hash}, ${salt}, now())
+      ON CONFLICT (id) DO UPDATE SET
+        username = EXCLUDED.username,
+        password_hash = EXCLUDED.password_hash,
+        salt = EXCLUDED.salt,
+        updated_at = now()
+      RETURNING updated_at`;
+    await localStore.saveAdminCredentials({ username, password_hash, salt }).catch(() => {});
+    return rows[0]?.updated_at;
   }
 };
 
@@ -178,6 +206,19 @@ const localStore = {
     await loadLocalDb();
     memDb.leads = (memDb.leads || []).filter((l) => String(l.id) !== String(id));
     await persistLocalDb();
+  },
+
+  async getAdminCredentials() {
+    await loadLocalDb();
+    return memDb.admin_credentials || null;
+  },
+
+  async saveAdminCredentials({ username, password_hash, salt }) {
+    await loadLocalDb();
+    const now = new Date().toISOString();
+    memDb.admin_credentials = { username, password_hash, salt, updated_at: now };
+    await persistLocalDb();
+    return now;
   }
 };
 

@@ -8,7 +8,7 @@ export default route({
   async POST(req, res) {
     const { username = '', password = '' } = await readJson(req, 10 * 1024);
 
-    if (!checkCredentials(String(username).trim(), String(password))) {
+    if (!await checkCredentials(String(username).trim(), String(password))) {
       // Small delay makes password guessing slower
       await wait(800);
       throw fail(401, 'Wrong username or password.');

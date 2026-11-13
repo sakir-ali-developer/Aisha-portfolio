@@ -36,6 +36,7 @@
     { id: 'leads', label: 'Leads', icon: 'inbox', badge: true },
     { group: 'Site settings' },
     { id: 'settings', label: 'General', icon: 'gear' },
+    { id: 'account', label: 'Account & Security', icon: 'shield' },
     { id: 'socials', label: 'Contact & Social', icon: 'link' },
     { id: 'media', label: 'Photo & CV', icon: 'image' },
     { group: 'Page content' },
@@ -178,8 +179,8 @@
     state.user = null;
     document.title = 'Log in | Aisha';
     const error = h('p', { class: 'login__error', role: 'alert' });
-    const user = h('input', { class: 'input', id: 'login-user', name: 'username', autocomplete: 'username', placeholder: 'Username', required: true, value: 'admin' });
-    const pass = h('input', { class: 'input', id: 'login-pass', name: 'password', type: 'password', autocomplete: 'current-password', placeholder: 'Password', required: true, value: 'password123' });
+    const user = h('input', { class: 'input', id: 'login-user', name: 'username', autocomplete: 'username', placeholder: 'Username', required: true, value: '' });
+    const pass = h('input', { class: 'input', id: 'login-pass', name: 'password', type: 'password', autocomplete: 'current-password', placeholder: 'Password', required: true, value: '' });
     const eye = h('button', { class: 'icon-btn', type: 'button', 'aria-label': 'Show password' }, icon('eye'));
     eye.addEventListener('click', function () {
       const show = pass.type === 'password';
@@ -188,21 +189,6 @@
       eye.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
     });
     const submit = h('button', { class: 'btn btn--primary btn--block', type: 'submit' }, 'Sign in', icon('arrow-right'));
-
-    const demoBadge = h('div', { class: 'login__demo', style: 'margin: 0 0 20px; padding: 12px 14px; background: rgba(138, 92, 199, 0.15); border: 1px dashed rgba(169, 124, 230, 0.4); border-radius: 12px; font-size: 0.82rem; color: #d8c4f5; text-align: left;' },
-      h('div', { style: 'display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;' },
-        h('span', { style: 'font-weight: 600; color: #fff;' }, '🔑 Demo Logins Ready'),
-        h('button', {
-          type: 'button',
-          style: 'background: rgba(255, 255, 255, 0.12); color: #fff; border: none; padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; cursor: pointer;',
-          onclick: () => { user.value = 'admin'; pass.value = 'password123'; user.focus(); }
-        }, 'Auto-fill')
-      ),
-      h('div', { style: 'line-height: 1.5; color: #aaa0b8;' },
-        'Username: ', h('strong', { style: 'color: #fff;' }, 'admin'), ' (or ', h('strong', { style: 'color: #fff;' }, 'aisha'), ')<br>',
-        'Password: ', h('strong', { style: 'color: #fff;' }, 'password123')
-      )
-    );
 
     const form = h('form', { class: 'login__form', novalidate: true },
       h('label', { class: 'sr-only', for: 'login-user' }, 'Username'), user,
@@ -233,10 +219,9 @@
         h('p', { class: 'login__logo' }, 'Aisha', h('span', { text: '.' })),
         h('h1', { class: 'login__title', text: 'Welcome back' }),
         h('p', { class: 'login__sub', text: 'Sign in to manage your portfolio.' }),
-        demoBadge,
         form,
         h('a', { class: 'login__back', href: '/' }, '← Back to website'))));
-    setTimeout(() => submit.focus(), 50);
+    setTimeout(() => user.focus(), 50);
   }
 
 
@@ -285,6 +270,7 @@
         h('div', null, h('p', { class: 'sidebar__name', text: 'Aisha Ali Muhammad' }), h('p', { class: 'sidebar__role', text: 'Portfolio dashboard' }))),
       nav,
       h('div', { class: 'sidebar__foot' },
+        h('a', { class: 'nav__link', href: '#/account' }, icon('shield'), h('span', { style: 'overflow:hidden;text-overflow:ellipsis;white-space:nowrap;' }, state.user ? '@' + state.user : 'Account')),
         h('a', { class: 'nav__link', href: '/', target: '_blank', rel: 'noopener' }, icon('external'), 'View website'),
         h('button', { class: 'nav__link', type: 'button', style: 'border:0;background:none;cursor:pointer;width:100%', on: { click: logout } }, icon('logout'), 'Log out')));
 
@@ -793,9 +779,9 @@
     else leads.slice(0, 5).forEach((lead) => recent.append(leadRow(lead)));
 
     const quick = [
-      ['settings', 'gear', 'Experience & location'], ['media', 'image', 'Hero photo & CV'],
-      ['socials', 'link', 'Social links'], ['projects', 'briefcase', 'Projects'],
-      ['expertise', 'grid', 'Skills & tabs'], ['services', 'layers', 'Services']
+      ['settings', 'gear', 'Experience & location'], ['account', 'shield', 'Login & password'],
+      ['media', 'image', 'Hero photo & CV'], ['socials', 'link', 'Social links'],
+      ['projects', 'briefcase', 'Projects'], ['expertise', 'grid', 'Skills & tabs']
     ];
 
     return page(greet + ', Aisha', 'Here is what is happening with your portfolio.',
@@ -963,6 +949,8 @@
           { key: 'email', label: 'Email', type: 'email' },
           { key: 'phone', label: 'Phone', type: 'tel', placeholder: '+92 300 0000000', hint: 'Leave empty to hide the phone everywhere.' }
         ])),
+      panel('Admin Account & Security', 'shield', 'Update your administrator username or change your dashboard password.',
+        h('a', { class: 'btn btn--glass btn--sm', href: '#/account' }, icon('shield'), 'Manage login credentials')),
       panel('Reset content', 'refresh', 'Restore every section to the original text. Your leads and uploaded files are not affected.',
         h('button', { class: 'btn btn--danger btn--sm', type: 'button', on: { click: async () => {
           if (!(await confirmBox('Reset all content?', 'All text goes back to the original version. You can still undo by not saving.', 'Reset', true))) return;
@@ -972,6 +960,180 @@
           route();
           toast('Content reset. Click Save to publish, or reload to undo.');
         } } }, icon('refresh'), 'Reset to original')));
+  };
+
+  /* --- Account & Security settings --- */
+  PAGES.account = function () {
+    const userDisplay = h('strong', { style: 'color: #fff; font-size: 1.05rem;' }, state.user ? '@' + state.user : '@aisha_muhammad_ali_@7623');
+    const infoPanel = panel('Current Account', 'user', 'Your active administrator account and session details.',
+      h('div', { class: 'account-info', style: 'display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 8px;' },
+        h('div', { style: 'padding: 14px 16px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);' },
+          h('p', { class: 'field__label', text: 'Admin Username' }),
+          h('p', { style: 'margin-top: 6px;' }, userDisplay)
+        ),
+        h('div', { style: 'padding: 14px 16px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);' },
+          h('p', { class: 'field__label', text: 'Access Level' }),
+          h('p', { style: 'margin-top: 6px; color: #a97ce6; font-weight: 600;' }, 'Full Administrator')
+        ),
+        h('div', { style: 'padding: 14px 16px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);' },
+          h('p', { class: 'field__label', text: 'Encryption' }),
+          h('p', { style: 'margin-top: 6px; color: #7de8b4;' }, 'PBKDF2-SHA512 + Salt')
+        )
+      )
+    );
+
+    const curPass = h('input', { class: 'input', id: 'acc-cur-pass', type: 'password', autocomplete: 'current-password', placeholder: 'Enter your current password', required: true });
+    const curEye = h('button', { class: 'icon-btn', type: 'button', 'aria-label': 'Show password' }, icon('eye'));
+    curEye.addEventListener('click', function () {
+      const show = curPass.type === 'password';
+      curPass.type = show ? 'text' : 'password';
+      curEye.replaceChildren(icon(show ? 'eye-off' : 'eye'));
+    });
+
+    const newUser = h('input', { class: 'input', id: 'acc-new-user', type: 'text', autocomplete: 'username', placeholder: state.user || 'e.g. aisha_muhammad_ali_@7623' });
+
+    const newPass = h('input', { class: 'input', id: 'acc-new-pass', type: 'password', autocomplete: 'new-password', placeholder: 'Enter new password (min 6 characters)' });
+    const newEye = h('button', { class: 'icon-btn', type: 'button', 'aria-label': 'Show password' }, icon('eye'));
+    newEye.addEventListener('click', function () {
+      const show = newPass.type === 'password';
+      newPass.type = show ? 'text' : 'password';
+      newEye.replaceChildren(icon(show ? 'eye-off' : 'eye'));
+    });
+
+    const confirmPass = h('input', { class: 'input', id: 'acc-confirm-pass', type: 'password', autocomplete: 'new-password', placeholder: 'Re-enter new password' });
+    const confirmEye = h('button', { class: 'icon-btn', type: 'button', 'aria-label': 'Show password' }, icon('eye'));
+    confirmEye.addEventListener('click', function () {
+      const show = confirmPass.type === 'password';
+      confirmPass.type = show ? 'text' : 'password';
+      confirmEye.replaceChildren(icon(show ? 'eye-off' : 'eye'));
+    });
+
+    const errorMsg = h('p', { class: 'login__error', style: 'text-align: left; margin: 14px 0 0; min-height: 1.2em;', role: 'alert' });
+    const successMsg = h('div', { class: 'notice', style: 'margin-top: 14px; background: rgba(125, 232, 180, 0.12); color: #7de8b4; border: 1px solid rgba(125, 232, 180, 0.3); display: none;' }, icon('circle-check'), h('span', { class: 'notice-text' }));
+
+    const submitBtn = h('button', { class: 'btn btn--primary', type: 'submit' }, icon('check'), 'Update Credentials');
+
+    const form = h('form', { class: 'account__form', novalidate: true },
+      h('div', { class: 'fields' },
+        h('div', { class: 'field field--full' },
+          h('label', { class: 'field__label', for: 'acc-cur-pass', text: 'Current Password *' }),
+          h('div', { class: 'password' }, curPass, curEye),
+          h('p', { class: 'field__hint', text: 'Required to authorize updating your username or password.' })
+        ),
+        h('div', { class: 'field field--full' },
+          h('label', { class: 'field__label', for: 'acc-new-user', text: 'New Username' }),
+          newUser,
+          h('p', { class: 'field__hint', text: 'Leave empty if you only want to change your password.' })
+        ),
+        h('div', { class: 'field' },
+          h('label', { class: 'field__label', for: 'acc-new-pass', text: 'New Password' }),
+          h('div', { class: 'password' }, newPass, newEye),
+          h('p', { class: 'field__hint', text: 'At least 6 characters. Leave empty if only updating username.' })
+        ),
+        h('div', { class: 'field' },
+          h('label', { class: 'field__label', for: 'acc-confirm-pass', text: 'Confirm New Password' }),
+          h('div', { class: 'password' }, confirmPass, confirmEye),
+          h('p', { class: 'field__hint', text: 'Re-enter your new password to verify.' })
+        )
+      ),
+      errorMsg,
+      successMsg,
+      h('div', { style: 'margin-top: 22px; display: flex; align-items: center; gap: 12px;' },
+        submitBtn
+      )
+    );
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      errorMsg.textContent = '';
+      successMsg.style.display = 'none';
+
+      const currentPassword = curPass.value;
+      const newUsername = newUser.value.trim();
+      const newPassword = newPass.value;
+      const confirmPassword = confirmPass.value;
+
+      if (!currentPassword) {
+        errorMsg.textContent = 'Please enter your current password.';
+        curPass.focus();
+        return;
+      }
+
+      if (!newUsername && !newPassword) {
+        errorMsg.textContent = 'Please enter a new username or a new password.';
+        return;
+      }
+
+      if (newUsername && newUsername.length < 3) {
+        errorMsg.textContent = 'Username must be at least 3 characters.';
+        newUser.focus();
+        return;
+      }
+
+      if (newPassword) {
+        if (newPassword.length < 6) {
+          errorMsg.textContent = 'New password must be at least 6 characters.';
+          newPass.focus();
+          return;
+        }
+        if (newPassword !== confirmPassword) {
+          errorMsg.textContent = 'New password and confirmation password do not match.';
+          confirmPass.focus();
+          return;
+        }
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-loading');
+
+      try {
+        const payload = { currentPassword };
+        if (newUsername) payload.newUsername = newUsername;
+        if (newPassword) payload.newPassword = newPassword;
+
+        const res = await api('/api/account', {
+          method: 'POST',
+          json: payload
+        });
+
+        state.user = res.user;
+        userDisplay.textContent = '@' + res.user;
+        newUser.placeholder = res.user;
+        newUser.value = '';
+        curPass.value = '';
+        newPass.value = '';
+        confirmPass.value = '';
+
+        const sidebarLink = els.sidebar && els.sidebar.querySelector('a[href="#/account"] span');
+        if (sidebarLink) sidebarLink.textContent = '@' + res.user;
+
+        successMsg.querySelector('.notice-text').textContent = res.message || 'Credentials updated successfully.';
+        successMsg.style.display = 'flex';
+        toast('Login credentials updated successfully.');
+      } catch (err) {
+        errorMsg.textContent = err.message;
+        toast(err.message, true);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+      }
+    });
+
+    const editPanel = panel('Change Username & Password', 'shield', 'Update your administrator credentials.', form);
+
+    const tipsPanel = panel('Security Best Practices', 'info', null,
+      h('ul', { style: 'padding-left: 20px; line-height: 1.8; color: var(--muted); font-size: 0.88rem;' },
+        h('li', null, 'Your password is cryptographically protected with ', h('strong', { style: 'color: #fff;' }, 'PBKDF2-SHA512'), ' using unique random salts.'),
+        h('li', null, 'Updates take effect immediately across all sessions and database stores.'),
+        h('li', null, 'Keep your login credentials private and stored in a secure password manager.')
+      )
+    );
+
+    return page('Account & Security', 'Manage your administrator username and password for this portfolio dashboard.',
+      infoPanel,
+      editPanel,
+      tipsPanel
+    );
   };
 
   /* --- Contact & social links --- */
