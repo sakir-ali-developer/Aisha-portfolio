@@ -63,7 +63,7 @@ export async function checkCredentials(username, password) {
 
   // 1. Check against database-stored credentials (Neon Postgres or local JSON store)
   try {
-    const creds = await store.getAdminCredentials();
+    const creds = await store.getAdminCredentials(u);
     if (creds && creds.username) {
       const userOk = safeEqual(u, creds.username);
       let passOk = false;

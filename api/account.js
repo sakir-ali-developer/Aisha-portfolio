@@ -60,7 +60,7 @@ export default route({
     // Determine current username
     let currentUsername = session.sub;
     try {
-      const creds = await store.getAdminCredentials();
+      const creds = await store.getAdminCredentials(session.sub);
       if (creds?.username) currentUsername = creds.username;
     } catch {}
 

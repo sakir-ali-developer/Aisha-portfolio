@@ -69,6 +69,7 @@ const neonStore = {
       INSERT INTO site_content (id, data, updated_at) VALUES ('main', ${json}::jsonb, now())
       ON CONFLICT (id) DO UPDATE SET data = EXCLUDED.data, updated_at = now()
       RETURNING updated_at`;
+    await localStore.saveContent(data).catch(() => {});
     return rows[0].updated_at;
   },
 
@@ -79,6 +80,7 @@ const neonStore = {
       VALUES (${lead.name}, ${lead.email}, ${lead.company}, ${lead.phone}, ${lead.reason},
               ${JSON.stringify(lead.interests)}::jsonb, ${lead.message}, ${lead.reference_link})
       RETURNING id`;
+    await localStore.createLead(lead).catch(() => {});
     return rows[0].id;
   },
 
@@ -90,17 +92,26 @@ const neonStore = {
   async updateLead(id, isRead) {
     await ensureSchema();
     await sql()`UPDATE leads SET is_read = ${isRead} WHERE id = ${id}`;
+    await localStore.updateLead(id, isRead).catch(() => {});
   },
 
   async deleteLead(id) {
     await ensureSchema();
     await sql()`DELETE FROM leads WHERE id = ${id}`;
+    await localStore.deleteLead(id).catch(() => {});
   },
 
-  async getAdminCredentials() {
+  async getAdminCredentials(username) {
     await ensureSchema();
-    const rows = await sql()`SELECT username, password_hash, salt, updated_at FROM admin_credentials WHERE id = 'admin'`;
-    return rows[0] || null;
+    if (username) {
+      const u = String(username).trim();
+      const rows = await sql()`SELECT id, username, password_hash, salt, updated_at FROM admin_credentials WHERE LOWER(username) = LOWER(${u}) LIMIT 1`;
+      if (rows[0]) return rows[0];
+    }
+    const adminRow = await sql()`SELECT id, username, password_hash, salt, updated_at FROM admin_credentials WHERE id = 'admin'`;
+    if (adminRow[0]) return adminRow[0];
+    const anyRows = await sql()`SELECT id, username, password_hash, salt, updated_at FROM admin_credentials ORDER BY updated_at DESC LIMIT 1`;
+    return anyRows[0] || null;
   },
 
   async saveAdminCredentials({ username, password_hash, salt }) {
@@ -114,6 +125,18 @@ const neonStore = {
         salt = EXCLUDED.salt,
         updated_at = now()
       RETURNING updated_at`;
+    
+    // Also record by username key
+    await sql()`
+      INSERT INTO admin_credentials (id, username, password_hash, salt, updated_at)
+      VALUES (${username.toLowerCase()}, ${username}, ${password_hash}, ${salt}, now())
+      ON CONFLICT (id) DO UPDATE SET
+        username = EXCLUDED.username,
+        password_hash = EXCLUDED.password_hash,
+        salt = EXCLUDED.salt,
+        updated_at = now()
+    `.catch(() => {});
+
     await localStore.saveAdminCredentials({ username, password_hash, salt }).catch(() => {});
     return rows[0]?.updated_at;
   }
@@ -208,8 +231,11 @@ const localStore = {
     await persistLocalDb();
   },
 
-  async getAdminCredentials() {
+  async getAdminCredentials(username) {
     await loadLocalDb();
+    if (username && memDb.admin_credentials && memDb.admin_credentials.username.toLowerCase() === username.trim().toLowerCase()) {
+      return memDb.admin_credentials;
+    }
     return memDb.admin_credentials || null;
   },
 
